@@ -1,7 +1,8 @@
 <template>
   <button type="button" v-on:click="changeFlag">Toggle</button>
-  <transition name="fade0">
-    <h2 v-if="flag">Hello Dynamic!</h2>
+  <transition name="fade0" mode="out-in">
+    <h2 v-if="flag" key="main">Hello Dynamic!</h2>
+    <h1 v-else key="secondary">No Dynamic here!</h1>
   </transition>
   <transition name="fade1">
     <h3 v-if="flag">Hello Second Dynamic!</h3>
@@ -32,12 +33,12 @@ export default {
   color:red;
 }
 .fade0-enter-to{
-  
+  transition:all 0.25s linear;
   color:rgb(167, 30, 96);
   opacity: 1;
 }
 .fade0-leave-to {
-  transition:all 0.75s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition:all 0.25s linear;;
   transform: translateX(20px);
   color:green;
 }
